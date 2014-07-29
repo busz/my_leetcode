@@ -26,29 +26,41 @@ class Solution:
                 return -1
         left = 0;
         right = len(A) - 1;
-        while left >= 0 and left != right :
+        while left >= 0 and left <len(A) and right < len(A) and right >= 0 and left < right :
             mid = (left + right)/2;
-            #print mid
+           
             if A[mid] < target:
-                left = mid + 1
+                if target <= A[-1]:
+                    left = mid + 1
+                elif target >= A[0]:
+                    if A[mid] >= A[0]:
+                        left = mid + 1;
+                    else:
+                        right = mid - 1;
+                else:
+                    return -1
+                
             elif A[mid] > target:
                 if A[0] > target:
-                    left = mid+1;
-                    right = len(A) - 1
+                    if A[mid] > A[-1]:
+                        left = mid + 1
+                    else:
+                        right = mid-1;
+                    
                 elif A[0] < target:
-                    left = 0;
+                    
                     right = mid - 1;
                 else:
                     return 0
-            if A[mid] == target:
+            else:
                 return mid;
         
-        if left > 0 and A[left] == target:
+        if left >= 0 and A[left] == target:
             return left
         else:
             return -1 
         
 test = Solution()
-A = [2,3,4,0,1]
-target = 1
+A = [3,4,5,1,2]
+target = 4
 print test.search(A, target)
