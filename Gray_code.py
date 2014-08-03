@@ -37,7 +37,7 @@ class Solution:
     def grayCode(self, n):
         r = [0]
         if n==0:
-            return [0]
+            return r
         
         pos = 0
         while n > pos :
