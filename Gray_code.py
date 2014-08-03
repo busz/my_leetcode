@@ -35,4 +35,22 @@ For now, the judge is able to judge based on one instance of gray code sequence.
 class Solution:
     # @return a list of integers
     def grayCode(self, n):
+        r = [0]
+        if n==0:
+            return [0]
         
+        pos = 0
+        while n > pos :
+            rightR = r[::-1]
+            diff = 1<<pos
+            rPart = [ item + diff for item in rightR]
+                
+            r = r + rPart
+            pos = pos + 1
+        return r
+            
+        
+    
+test = Solution()
+print test.grayCode(3)
+  
