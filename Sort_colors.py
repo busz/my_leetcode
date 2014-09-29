@@ -32,21 +32,27 @@ class Solution:
     # @param A a list of integers
     # @return nothing, sort in place
     def sortColors(self, A):
-       #=======================================================================
-        # two-pass algorithm
-        # num = len(A)
-        # N = [0,0,0]
-        # for i in range(num):
-        #     N[A[i]] = N[A[i]] + 1;
-        # for i in range(N[0]):
-        #     A[i] = 0;
-        # for i in range(N[1]):
-        #     A[i+N[0]] = 1;
-        # for i in range(N[2]):
-        #     A[i+N[0]+N[1]] = 2;
-        #=======================================================================
+        n = len(A)
+        zero = 0
+        two = n - 1
+        pos = 0
+        while pos <= two:
+            if A[pos] == 0:
+                A[pos] , A[zero] = A[zero] , A[pos]
+                pos += 1
+                zero += 1
+            elif A[pos] == 2:
+                while two> pos and A[two] == 2:
+                    two -= 1
+                A[pos] , A[two] = A[two] , A[pos]
+                two -= 1 
+            else:
+                pos += 1    
         
-        
-    
-
+        print A
+A = [ 0 , 1, 2, 1, 0 ,2]
+A = [2,2]
+test =  Solution();
+test.sortColors(A)
+            
         
