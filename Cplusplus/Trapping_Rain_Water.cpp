@@ -31,8 +31,8 @@ public:
             if(height > A[i])
                 sum += height - A[i];
         }
-        delete left;
-        delete right;
+        delete[] left;
+        delete[] right;
         return sum;
     }
 };
