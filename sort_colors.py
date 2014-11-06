@@ -32,27 +32,3 @@ class Solution:
     # @param A a list of integers
     # @return nothing, sort in place
     def sortColors(self, A):
-        n = len(A)
-        zero = 0
-        two = n - 1
-        pos = 0
-        while pos <= two:
-            if A[pos] == 0:
-                A[pos] , A[zero] = A[zero] , A[pos]
-                pos += 1
-                zero += 1
-            elif A[pos] == 2:
-                while two> pos and A[two] == 2:
-                    two -= 1
-                A[pos] , A[two] = A[two] , A[pos]
-                two -= 1 
-            else:
-                pos += 1    
-        
-        print A
-A = [ 0 , 1, 2, 1, 0 ,2]
-A = [2,2]
-test =  Solution();
-test.sortColors(A)
-            
-        
